@@ -3,6 +3,7 @@ import Container from '@/components/search-page/layout/ContainerComponent.vue'
 import Aside from '@/components/search-page/layout/AsideComponent.vue'
 import Article from '@/components/search-page/layout/ArticleComponent.vue'
 import Search from '@/components/search-page/SearchComponent.vue'
+import UserResult from '@/components/search-page/UserResultComponent.vue'
 import UserSmall from '@/components/search-page/UserSmallComponent.vue'
 import UserBig from '@/components/search-page/UserBigComponent.vue'
 </script>
@@ -14,7 +15,9 @@ import UserBig from '@/components/search-page/UserBigComponent.vue'
 				<template #aside>
 					<Aside>
 						<Search />
-						<UserSmall />
+						<UserResult>
+							<!-- <UserSmall v-for="n in 10" /> -->
+						</UserResult>
 					</Aside>
 				</template>
 				<template #user-big>
@@ -24,3 +27,4 @@ import UserBig from '@/components/search-page/UserBigComponent.vue'
 		</Container>
 	</main>
 </template>
+<style lang="scss" scoped></style>

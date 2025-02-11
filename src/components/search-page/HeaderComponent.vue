@@ -1,13 +1,31 @@
 <script setup lang="ts">
-import Container from './layout/ContainerComponent.vue';
+import Container from '@/components/search-page/layout/ContainerComponent.vue';
+import LogoIcon from '@/components/search-page/icons/LogoIcon.vue';
+import UserMenuComponent from '@/components/search-page/UserMenuComponent.vue';
 </script>
 
 <template>
 	<header>
 		<Container>
-			Header
+			<LogoIcon />
+			<UserMenuComponent>
+				<template #name>
+					Пользователь
+				</template>
+			</UserMenuComponent>
 		</Container>
 	</header>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+header {
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 10px;
+		padding-top: 50px;
+		padding-bottom: 30px;
+	}
+}
+</style>
