@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Container from '@/components/search-page/layout/ContainerComponent.vue'
-import Aside from '@/components/search-page/layout/AsideComponent.vue'
-import Article from '@/components/search-page/layout/ArticleComponent.vue'
-import Search from '@/components/search-page/SearchComponent.vue'
-import UserResult from '@/components/search-page/UserResultComponent.vue'
-import UserSmall from '@/components/search-page/UserSmallComponent.vue'
-import UserBig from '@/components/search-page/UserBigComponent.vue'
+import Container from '@/components/search-page/layout/Container.vue'
+import Aside from '@/components/search-page/layout/Aside.vue'
+import Article from '@/components/search-page/layout/Article.vue'
+import Search from '@/components/search-page/Search.vue'
+import UserResult from '@/components/search-page/UserResult.vue'
+import UserSmall from '@/components/search-page/UserSmall.vue'
+import UserBig from '@/components/search-page/UserBig.vue'
 </script>
 
 <template>
@@ -16,7 +16,9 @@ import UserBig from '@/components/search-page/UserBigComponent.vue'
 					<Aside>
 						<Search />
 						<UserResult>
-							<!-- <UserSmall v-for="n in 10" /> -->
+							<UserSmall 
+								v-for="n in 20" 
+							/>
 						</UserResult>
 					</Aside>
 				</template>

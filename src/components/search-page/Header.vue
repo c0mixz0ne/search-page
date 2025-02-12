@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import Container from '@/components/search-page/layout/ContainerComponent.vue';
+import Container from '@/components/search-page/layout/Container.vue';
 import LogoIcon from '@/components/search-page/icons/LogoIcon.vue';
-import UserMenuComponent from '@/components/search-page/UserMenuComponent.vue';
+import UserMenuComponent from '@/components/search-page/UserMenu.vue';
 </script>
 
 <template>
