@@ -5,7 +5,7 @@
 <template>
 	<li>
 		<figure>
-			<img src="/public/default-avatar.png" alt="Avatar">
+			<img src="/public/images/default-avatar.png" alt="Avatar">
 			<figcaption>
 				<span>
 					Name
@@ -35,6 +35,9 @@ li {
 			outline: 1px solid var(--gray);
 			figcaption {
 				background-color: var(--gray);
+				span {
+					margin-left: 10px;
+				}
 			}
 		}
 	}
@@ -61,6 +64,7 @@ li {
 			span {
 				color: var(--black);
 				font-weight: 600;
+				transition: var(--transition);
 			}
 		}
 	}

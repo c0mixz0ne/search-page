@@ -6,6 +6,15 @@ import Search from '@/components/search-page/Search.vue'
 import UserResult from '@/components/search-page/UserResult.vue'
 import UserSmall from '@/components/search-page/UserSmall.vue'
 import UserBig from '@/components/search-page/UserBig.vue'
+
+const currentUser : any = {
+	name: 'name',
+	email: 'email',
+	phone: '123456',
+	text: 'lorem'
+}
+
+const searchUsers: number = 20
 </script>
 
 <template>
@@ -16,14 +25,12 @@ import UserBig from '@/components/search-page/UserBig.vue'
 					<Aside>
 						<Search />
 						<UserResult>
-							<UserSmall 
-								v-for="n in 20" 
-							/>
+							<UserSmall v-for="user in searchUsers" :user="user"/>
 						</UserResult>
 					</Aside>
 				</template>
 				<template #user-big>
-					<UserBig />
+					<UserBig v-if="currentUser" :user="currentUser"/>
 				</template>
 			</Article>
 		</Container>

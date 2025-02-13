@@ -22,13 +22,12 @@ const isLoading = !false;
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	gap: 10px;
 	overflow: hidden;
 	height: 100%;
 
 	.user-list {
 		list-style-type: none;
-		margin: -10px 0;
 		padding: 10px;
 		display: flex;
 		flex-direction: column;

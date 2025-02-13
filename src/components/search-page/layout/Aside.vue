@@ -7,7 +7,7 @@
 <style lang="scss" scoped>
 aside {
 	width: var(--sidebar-width);
-	padding: 30px 10px;
+	padding: 30px 10px 20px 10px;
 	border-right: 1px solid var(--gray);
 	display: flex;
 	flex-direction: column;

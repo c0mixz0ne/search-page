@@ -1,8 +1,18 @@
+<script setup lang="ts">
+	import { defineProps, defineEmits, ref} from 'vue'
+
+	const props = defineProps<{
+		user?: {
+			type: any
+		}
+	}>()
+
+	console.log(props.user);
+	
+</script>
 <template>
 	<div class="user-big">
-		<span class="empty">
-			Выберите сотрудника, чтобы посмотреть его профиль
-		</span>
+		{{ user }}
 	</div>
 </template>
 
@@ -14,10 +24,6 @@
 	align-items: center;
 	justify-content: center;
 
-	.empty {
-		user-select: none;
-		color: var(--dark-gray);
-		font-size: var(--small-font-size);
-	}
+
 }
 </style>
