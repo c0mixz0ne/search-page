@@ -7,9 +7,9 @@
 		<figure>
 			<img src="/public/images/default-avatar.png" alt="Avatar">
 			<figcaption>
-				<span>
+				<div>
 					Name
-				</span>
+				</div>
 					email@email
 			</figcaption>
 		</figure>
@@ -23,6 +23,7 @@ li {
 	&:hover {
 		figure {
 			outline: 1px solid var(--gray);
+			
 			figcaption {
 				background-color: var(--gray);
 			}
@@ -33,8 +34,10 @@ li {
 		figure {
 			box-shadow: unset;
 			outline: 1px solid var(--gray);
+
 			figcaption {
 				background-color: var(--gray);
+
 				span {
 					margin-left: 10px;
 				}
@@ -49,19 +52,26 @@ li {
 		overflow: hidden;
 		outline: 1px solid transparent;
 		transition: var(--transition);
+
 		img {
 			width: 70px;
 			height: 70px;
 			object-fit: cover;
 			border-right: 1px solid var(--gray);
+			user-select: none;
 		}
 
 		figcaption {
+			overflow: hidden;
 			transition: var(--transition);
 			padding: 15px;
 			color: var(--dark-gray);
 			font-size: var(--small-font-size);
-			span {
+			width: 100%;
+
+			div {
+				overflow: hidden;
+				text-overflow: ellipsis;
 				color: var(--black);
 				font-weight: 600;
 				transition: var(--transition);

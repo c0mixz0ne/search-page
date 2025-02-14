@@ -1,5 +1,20 @@
 <script setup lang="ts">
+const $emit = defineEmits<{
+    'action': [data: string];
+}>();
 
+const getDataHandler = (event: Event): void => {
+	// Debounce
+	const timeoutId = window.setTimeout(() => {}, 0);
+	for (let id = timeoutId; id >= 0; id -= 1) {
+		window.clearTimeout(id);
+	}
+
+	setTimeout(() => {
+		const target = event.target as HTMLInputElement;	
+		$emit('action', target.value);
+	}, 500);
+}
 </script>
 
 <template>
@@ -7,7 +22,11 @@
 		<div class="title">
 			Поиск сотрудников
 		</div>
-		<input placeholder="Введите Id или имя" type="text">
+		<input 
+			@input="getDataHandler"
+		 	placeholder="Введите Id или имя" 
+			type="text"
+		>
 	</div>
 </template>
 
