@@ -86,6 +86,7 @@ li {
       div {
         overflow: hidden;
         text-overflow: ellipsis;
+        white-space: nowrap;
         color: var(--black);
         font-weight: 600;
         transition: var(--transition);
