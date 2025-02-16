@@ -92,5 +92,18 @@ defineProps<{
       }
     }
   }
+
+  @media screen and (max-width: 768px) {
+	figure {
+		flex-direction: column;
+		img, figcaption {
+			width: 100%;
+		}
+
+		img {
+			position: relative;
+		}
+	}
+  }
 }
 </style>

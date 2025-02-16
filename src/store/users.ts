@@ -32,6 +32,8 @@ const users = createStore({
         commit('setCurrentUser', null)
       } catch (error) {
         commit('setError', error)
+		commit('setUsers', [])
+      	commit('setCurrentUser', null)
       } finally {
         commit('setLoading', false)
       }

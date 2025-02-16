@@ -12,5 +12,9 @@ aside {
   display: flex;
   flex-direction: column;
   gap: 25px;
+
+  @media screen and (max-width: 768px) { 
+    width: 100%;
+  }
 }
 </style>

@@ -70,6 +70,10 @@ defineProps<{
     border-color: var(--logo-color) var(--gray);
     animation: loader 1s infinite;
   }
+
+  @media screen and (max-width: 768px) { 
+	max-height: 300px;
+  }
 }
 
 @keyframes loader {

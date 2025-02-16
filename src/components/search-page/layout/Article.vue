@@ -26,5 +26,11 @@ article {
     color: var(--dark-gray);
     font-size: var(--small-font-size);
   }
+
+  @media screen and (max-width: 768px) { 
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 10px;
+  }
 }
 </style>

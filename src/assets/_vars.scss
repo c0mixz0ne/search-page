@@ -16,4 +16,8 @@
   --search-page-min-height: 250px;
   --sidebar-width: 280px;
   --transition: 0.5s ease;
+
+  @media screen and (max-width: 768px) { 
+    --container-padding: 10px;
+  }
 }
