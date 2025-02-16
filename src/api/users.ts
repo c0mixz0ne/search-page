@@ -1,16 +1,16 @@
-import axios from "axios";
+import axios from 'axios'
 
 const fetchUsers = async (url: any) => {
+  let data
 
-let data
-
-try {
-	const response = await axios.get(url);
-	data = response.data
-	} catch (err) {
-		console.warn(err);
-	} 
-	return { data }
-};
+  try {
+    const response = await axios.get(url)
+    data = response.data
+    console.log(data)
+  } catch (err) {
+    console.warn(err)
+  }
+  return { data }
+}
 
 export default fetchUsers

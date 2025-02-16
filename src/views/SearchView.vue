@@ -7,61 +7,66 @@ import UserResult from '@/components/search-page/UserResult.vue'
 import UserSmall from '@/components/search-page/UserSmall.vue'
 import UserBig from '@/components/search-page/UserBig.vue'
 
-import fetchUsers from '@/api/users'
 import createParams from '@/composables/createParams'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
-const lastParams = ref<string>();
+import { useStore } from 'vuex'
 
-const ApiUrl = import.meta.env.VITE_API_URL;
+import type { User } from '@/types/types'
 
-const getUsers = async (data: string):Promise<void> => {
-	const params = createParams(data);
+const ApiUrl = import.meta.env.VITE_API_URL
 
-	if (params.length === 0) {
-		// TODO: clear store if params 0
-		console.warn('No parameters provided for the request.');
-		return;
-	}
+const usersStore = useStore()
 
-	if (params === lastParams.value) {
-        console.warn('No change in parameters, skipping fetch request.'); 
-        return;
-    }
+const lastParams = ref<string>()
 
-	lastParams.value = params;
+const getUsers = async (data: string): Promise<void> => {
+  const params = createParams(data)
 
-	await fetchUsers(`${ApiUrl}/users?${params}`);
+  if (params.length === 0) {
+    usersStore.dispatch('clearUsers')
+    lastParams.value = ''
+    console.warn('No parameters provided for the request.')
+    return
+  }
+
+  if (params === lastParams.value) {
+    console.warn('No change in parameters, skipping fetch request.')
+    return
+  }
+
+  lastParams.value = params
+
+  usersStore.dispatch('fetchUsers', `${ApiUrl}/users?${params}`)
 }
 
-
-const currentUser: any = {
-	name: 'name',
-	email: 'email',
-	phone: '123456',
-	text: 'lorem'
+const setCurrentUser = (user: User) => {
+  usersStore.dispatch('setCurrentUser', user)
 }
 
-const searchUsers: number = 20
+const users = computed(() => usersStore.getters.getUsers)
+const loading = computed(() => usersStore.getters.getLoading)
+const currentUser = computed(() => usersStore.getters.getCurrentUser)
+const error = computed(() => usersStore.getters.getError)
 </script>
 
 <template>
-	<main>
-		<Container>
-			<Article>
-				<template #aside>
-					<Aside>
-						<Search @action="getUsers"/>
-						<UserResult>
-							<UserSmall v-for="user in searchUsers" :user="user"/>
-						</UserResult>
-					</Aside>
-				</template>
-				<template #user-big>
-					<UserBig v-if="currentUser" :user="currentUser"/>
-				</template>
-			</Article>
-		</Container>
-	</main>
+  <main>
+    <Container>
+      <Article>
+        <template #aside>
+          <Aside>
+            <Search @action="getUsers" />
+            <UserResult :loading="loading">
+              <UserSmall v-for="user in users" :user="user" @setCurrentUser="setCurrentUser" />
+            </UserResult>
+          </Aside>
+        </template>
+        <template #user-big>
+          <UserBig v-if="currentUser" :user="currentUser" />
+        </template>
+      </Article>
+    </Container>
+  </main>
 </template>
 <style lang="scss" scoped></style>

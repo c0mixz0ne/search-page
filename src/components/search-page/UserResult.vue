@@ -1,65 +1,74 @@
 <script setup lang="ts">
-
-const isLoading = !false;
+defineProps<{
+  loading?: boolean
+}>()
 </script>
 
 <template>
-	<div class="result">
-		<div class="title">
-			Результаты
-		</div>
-		<ul class="user-list">
-			<slot>
-				<span class="empty">Начните поиск</span>
-				<div v-if="isLoading" class="loader"></div>
-			</slot>
-		</ul>
-	</div>
+  <div class="result">
+    <div class="title">Результаты</div>
+    <ul class="user-list" :class="loading ? 'loading' : ''">
+      <div v-if="loading" class="loader"></div>
+      <slot>
+        <span v-if="!loading" class="empty">Начните поиск</span>
+      </slot>
+    </ul>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 .result {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	overflow: hidden;
-	height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  height: 100%;
 
-	.user-list {
-		list-style-type: none;
-		padding: 10px;
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-		overflow: auto;
-	}
+  .user-list {
+    list-style-type: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow: auto;
 
-	.title {
-		font-weight: 600;
-		user-select: none;
-		padding: 0 10px;
-	}
+    &.loading {
+      :deep(li) {
+        opacity: 0.4;
+      }
+    }
+  }
 
-	.empty {
-		user-select: none;
-		color: var(--dark-gray);
-	}
+  .title {
+    font-weight: 600;
+    user-select: none;
+    padding: 0 10px;
+  }
 
-	.loader {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translateX(-50%);
-		margin: 0 auto;
-		width: 30px;
-		aspect-ratio: 1;
-		border-radius: 50%;
-		border: 1px solid;
-		border-color: var(--logo-color) var(--gray);
-		animation: loader 1s infinite;
-	}
+  .empty {
+    user-select: none;
+    color: var(--dark-gray);
+  }
+
+  .loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    margin: 0 auto;
+    width: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: var(--logo-color) var(--gray);
+    animation: loader 1s infinite;
+  }
 }
 
-@keyframes loader {to{transform: rotate(.5turn) translateX(50%)}}
+@keyframes loader {
+  to {
+    transform: rotate(0.5turn) translateX(50%);
+  }
+}
 </style>

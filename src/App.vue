@@ -4,6 +4,6 @@ import Header from '@/components/search-page/Header.vue'
 </script>
 
 <template>
-	<Header />
-	<RouterView />
+  <Header />
+  <RouterView />
 </template>
