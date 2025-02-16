@@ -27,3 +27,10 @@ export type Address = {
   zipcode: string
   geo: Location
 }
+
+export interface State {
+	users: User[];
+	currentUser: User | null;
+	loading: boolean;
+	error: string | null;
+}

@@ -1,9 +1,6 @@
 import axios from 'axios'
 import { createStore } from 'vuex'
-
-const ApiUrl = import.meta.env.VITE_API_URL
-
-console.log(ApiUrl)
+import type { User, State } from '@/types/types'
 
 const users = createStore({
   state: {
@@ -13,21 +10,21 @@ const users = createStore({
     error: null,
   },
   mutations: {
-    setUsers(state: any, users: any) {
+    setUsers(state: State, users: [User]) {
       state.users = users
     },
-    setCurrentUser(state: any, user: any) {
+    setCurrentUser(state: State, user: User) {
       state.currentUser = user
     },
-    setLoading(state: any, isLoading: any) {
+    setLoading(state: State, isLoading: boolean) {
       state.loading = isLoading
     },
-    setError(state: any, error: any) {
+    setError(state: State, error: string) {
       state.error = error
     },
   },
   actions: {
-    async fetchUsers({ commit }: any, url: string) {
+    async fetchUsers({ commit }, url: string) {
       commit('setLoading', true)
       try {
         const response = await axios.get(url)
@@ -39,25 +36,25 @@ const users = createStore({
         commit('setLoading', false)
       }
     },
-    clearUsers({ commit }: any) {
+    clearUsers({ commit }) {
       commit('setUsers', [])
       commit('setCurrentUser', null)
     },
-    setCurrentUser({ commit }: any, user) {
+    setCurrentUser({ commit }, user) {
       commit('setCurrentUser', user)
     },
   },
   getters: {
-    getUsers(state: any) {
+    getUsers(state) {
       return state.users
     },
-    getCurrentUser(state: any) {
+    getCurrentUser(state) {
       return state.currentUser
     },
-    getLoading(state: any) {
+    getLoading(state) {
       return state.loading
     },
-    getError(state: any) {
+    getError(state) {
       return state.error
     },
   },

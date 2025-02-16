@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const fetchUsers = async (url: any) => {
+const fetchUsers = async (url: string) => {
   let data
 
   try {

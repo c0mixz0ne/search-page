@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps<{
-  loading?: boolean
+  loading?: boolean,
+  error?: string
 }>()
 </script>
 
@@ -11,6 +12,7 @@ defineProps<{
       <div v-if="loading" class="loader"></div>
       <slot>
         <span v-if="!loading" class="empty">Начните поиск</span>
+		<span v-if="error" class="error">Произошла ошибка: {{ error }}</span>
       </slot>
     </ul>
   </div>
@@ -49,6 +51,10 @@ defineProps<{
   .empty {
     user-select: none;
     color: var(--dark-gray);
+  }
+
+  .error {
+	color: var(--red);
   }
 
   .loader {

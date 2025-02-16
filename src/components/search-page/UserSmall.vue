@@ -3,14 +3,14 @@ import type { User } from '@/types/types'
 import { defineProps, defineEmits } from 'vue'
 
 defineProps<{
-  user?: User
+  user: User
 }>()
 
 const emits = defineEmits<{
-  (e: 'setCurrentUser', user: any): void
+  (e: 'setCurrentUser', user: User): void
 }>()
 
-const setCurrentUserHandler = (user: any) => {
+const setCurrentUserHandler = (user: User) => {
   emits('setCurrentUser', user)
 }
 </script>

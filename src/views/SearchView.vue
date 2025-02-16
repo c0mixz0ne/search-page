@@ -57,8 +57,8 @@ const error = computed(() => usersStore.getters.getError)
         <template #aside>
           <Aside>
             <Search @action="getUsers" />
-            <UserResult :loading="loading">
-              <UserSmall v-for="user in users" :user="user" @setCurrentUser="setCurrentUser" />
+            <UserResult :loading="loading" :error="error">
+              <UserSmall v-for="user in users" :user="user" :key="user" @setCurrentUser="setCurrentUser" />
             </UserResult>
           </Aside>
         </template>
